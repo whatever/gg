@@ -28,4 +28,26 @@ func TestBasic(t *testing.T) {
 	if d.NW.Color != W || d.NE.Color != W || d.SE.Color != B || d.SW.Color != W {
 		t.Fail()
 	}
+
+	e := NewQuadtree(
+		NewQuadtreeLeaf(B, B, B, W),
+		NewQuadtreeLeaf(W, W, B, W),
+		NewQuadtreeWhite(),
+		NewQuadtreeBlack(),
+	)
+
+	e_nw := e.NW
+	e_ne := e.NE
+
+	if e.Color != G || e.NW.Color != G || e.NE.Color != G || e.SE.Color != W || e.SW.Color != B {
+		t.Fail()
+	}
+
+	if e_nw.NW.Color != B || e_nw.NE.Color != B || e_nw.SE.Color != B || e_nw.SW.Color != W {
+		t.Fail()
+	}
+
+	if e_ne.NW.Color != W || e_ne.NE.Color != W || e_ne.SE.Color != B || e_ne.SW.Color != W {
+		t.Fail()
+	}
 }

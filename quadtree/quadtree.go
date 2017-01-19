@@ -41,3 +41,13 @@ func NewQuadtreeLeaf(nw, ne, se, sw QuadtreeType) *Quadtree {
 		NewQuadtreeWithColor(sw),
 	}
 }
+
+func NewQuadtree(nw, ne, se, sw *Quadtree) *Quadtree {
+	return &Quadtree{
+		G,
+		nw,
+		ne,
+		se,
+		sw,
+	}
+}
